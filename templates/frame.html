@@ -11,34 +11,30 @@
 {% endblock %}
 {% block title %}Ika institute{% endblock %}
 {% block navbar %}
-<div class="container-fluid">
-  <nav class="nav navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Ika institute</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navbarSupportedContent" class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ t if t is defined else 'Ika'}}</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {% for t in topics %}
-            <a class="dropdown-item" href="/t/{{ t.shortcut }}">{{ t.topic_title }}</a>
-            {% endfor %}
-          </div>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="https://github.com/two-doges/ika">About</a></li>
-      </ul>
-    </div>
-  </nav>
-  <!-- div is in content -->
-  {% endblock %}
+<nav class="nav navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Ika institute</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="navbarSupportedContent" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ t if t is defined else 'Ika'}}</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% for t in topics %}
+          <a class="dropdown-item" href="/t/{{ t.shortcut }}">{{ t.topic_title }}</a>
+          {% endfor %}
+        </div>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="https://github.com/two-doges/ika">About</a></li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
 {% block content %}
-  <!-- container in navbar -->
-  {% block inc %}
-  {% endblock inc %}
-</div>
+{% block inc %}
+{% endblock inc %}
 {% endblock content %}
 {% block scripts %}
 {{ super() }}
