@@ -6,9 +6,9 @@ Ika institute
 {{ super() }}
 <script src="{{url_for('static', filename='button_control.js')}}"></script>
 {% endblock %}
-{% block content %}
+{% block inc %}
 {% if fid != 0 %}
-<div class="container">
+<div class="container ika-post">
     <form action="/ika/" method="POST" enctype="multipart/form-data" id="new-ika">
     <input type="hidden" name="forward_id" value="{{ fid }}">
     <div class="form-group">
@@ -33,36 +33,43 @@ Ika institute
     </form>
 </div>
 {% endif %}
+{% if not ikas %}
+<div class="bs-callout bs-callout-warning">
+  <h4 class="section">Oops!</h4>
+  <p class="mb-0">这里还是空的哦。</p>
+</div>
+{% else %}
 <div class="container">
 <ul class="list-group list-group-flush">
-{% for ika in ikas %}
-<li class="list-group-item">
-<div class="container">
-    <div class="row">
-        {% if ika.image_url %}
-        <div class="col-2">
-            <a href="{{ ika.image_url }}">
-                <img src="{{ ika.image_url }}" alt="" class="img-fluid">
-            </a>
-        </div>
-        {% endif %}
-        <div class="col-{{ '10' if ika.image_url else '12' }}">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1"> #{{ ika.ika_id }} {{ ika.title }}</h5>
-                <small>{{ ika.time }}</small>
-            </div>
-            <small>{{ ika.name }} #{{ ika.user_id }}</small>
-            <p class="mb-1">{{ ika.text }}</p>
-            {% if fid <= 0 %}
-            <a class="btn btn-outline-primary" href="/ika/{{ ika.ika_id }}">回应</a>
-            {% endif %}
-        </div>
-    </div>
-</div>
-</li>
-{% endfor %}
+  {% for ika in ikas %}
+  <li class="list-group-item">
+  <div class="container">
+      <div class="row">
+          {% if ika.image_url %}
+          <div class="col-2">
+              <a href="{{ ika.image_url }}">
+                  <img src="{{ ika.image_url }}" alt="" class="img-fluid">
+              </a>
+          </div>
+          {% endif %}
+          <div class="col-{{ '10' if ika.image_url else '12' }}">
+              <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"> #{{ ika.ika_id }} {{ ika.title }}</h5>
+                  <small>{{ ika.time }}</small>
+              </div>
+              <small>{{ ika.name }} #{{ ika.user_id }}</small>
+              <p class="mb-1">{{ ika.text }}</p>
+              {% if fid <= 0 %}
+              <a class="btn btn-outline-primary" href="/ika/{{ ika.ika_id }}">回应</a>
+              {% endif %}
+          </div>
+      </div>
+  </div>
+  </li>
+  {% endfor %}
 </ul>
 </div>
+{% endif %}
 <div class="container">
 <nav>
     <ul class="pagination">

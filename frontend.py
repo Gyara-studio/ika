@@ -21,6 +21,7 @@ def ika_list(t):  # t means topic
     '''return the ika list under root'''
     # if no topic endpoint will raise 404
     topic = endpoint.get_topic(t)
+    # tid will always be negative
     tid = topic.topic_id * -1
     ika_number = endpoint.get_ika_number(tid)
     # set the max page

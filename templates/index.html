@@ -2,8 +2,14 @@
 {% block title %}
 Ika institute
 {% endblock %}
-{% block content %}
-{{ super() }}
-<h1>Ika institute</h1>
-<p>这是一个匿名版,不需注册即可使用</p>
+{% block inc %}
+<div class="jumbotron">
+  <h1 class="display-3">Ika Ins</h1>
+  <p>这是一个匿名版,不需注册即可使用</p>
+  <hr class="m-y-md">
+  <p>点击跳转到时间线</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/t/t" role="button">时间线</a>
+  </p>
+</div>
 {% endblock %}
